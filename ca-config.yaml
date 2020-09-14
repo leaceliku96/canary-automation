@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: canary-version
+    app: helloapp-v2
     track: canary
-  name: canary-version
+  name: helloapp-v2
   namespace: default
 spec:
   progressDeadlineSeconds: 600
   replicas: 3
   selector:
     matchLabels:
-      app: canary-version
+      app: helloapp-v2
       track: canary
   strategy:
     rollingUpdate:
@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       labels:
-        app: canary-version
+        app: helloapp-v2
         track: canary
     spec:
       containers:
