@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: helloapp-v2
+    app: helloapp
+    version: v2
     track: canary
   name: helloapp-v2
   namespace: default
@@ -11,7 +12,8 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: helloapp-v2
+      app: helloapp
+      version: v2
       track: canary
   strategy:
     rollingUpdate:
@@ -22,10 +24,11 @@ spec:
     metadata:
       labels:
         app: helloapp
+        version: v2
         track: canary
     spec:
       containers:
-      - image: 240796/canary-version:v1
+      - image: 240796/helloapp:v2
         imagePullPolicy: Always
         name: canary-version
         terminationMessagePath: /dev/termination-log
