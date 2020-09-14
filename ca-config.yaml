@@ -2,10 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloapp-v2
-  namespace: default
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
+  selector:
+    matchLabels:
+      app: helloapp
   strategy:
     rollingUpdate:
       maxSurge: 25%
