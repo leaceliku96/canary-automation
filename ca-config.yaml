@@ -30,7 +30,7 @@ spec:
       containers:
       - image: 240796/helloapp:v2
         imagePullPolicy: Always
-        name: canary-version
+        name: helloapp:v2
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       restartPolicy: Always
