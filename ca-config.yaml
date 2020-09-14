@@ -1,20 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: helloapp
-    version: v2
-    track: canary
   name: helloapp-v2
   namespace: default
 spec:
   progressDeadlineSeconds: 600
-  replicas: 3
-  selector:
-    matchLabels:
-      app: helloapp
-      version: v2
-      track: canary
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -31,7 +22,4 @@ spec:
       - image: 240796/helloapp:v2
         imagePullPolicy: Always
         name: helloapp-v2
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
       restartPolicy: Always
-      schedulerName: default-scheduler
